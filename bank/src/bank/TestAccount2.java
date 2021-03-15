@@ -1,6 +1,6 @@
 package bank;
 
-public class TestAccount {
+public class TestAccount2 {
 	public static void main(String[] args) {
 		Account account1 = new Account();
 		account1.holder = "Jack";
@@ -12,10 +12,10 @@ public class TestAccount {
 		account2.balance = 3456.00;
 		account2.id = 56;
 		
-		Account account3 = new Account();
-		account3.holder = "Randall";
-		account3.balance = 2300.56;
-		account3.id = 67;
+		Account account3 = account2;
+		account3.holder = "William";
+		
+		
 		
 		System.out.println(account1.holder);
 		System.out.println(account1.balance);
