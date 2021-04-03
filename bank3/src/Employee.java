@@ -1,5 +1,6 @@
 
-public class Employee {
+
+public abstract class Employee {
 	private String name;
 	protected double salary;
 	
@@ -7,9 +8,10 @@ public class Employee {
 	public Employee() {
 	}
 	//Behavior
-	public double getSalaryBonus() {
-		return this.salary * 0.1;
-	}
+	
+	//we ensured that's other classes that's will implement this method 
+	public abstract double getSalaryBonus();
+	
 	
 	//accessor's methods 
 	public String getName() {

@@ -1,23 +1,22 @@
 
 
-public class Account {
+public abstract class Account {
 	//attributes
-	private Client holder;// get (immutable)
+	private Client holder; // get(immutable)
 	private int id; // get (immutable)
-	private double balance; //get
+	protected double balance; //get
+	
+	//static attribute 
+	private static int TotalAccount = 0;
 	
 	//Constructor
-	
-	
-	/*public Account() {
-		this.balance=500;
-		this.holder = new Client();
-		System.out.println("Constructing/Instacing a account...");
-	}*/
+	public static int GetTotalAccount() { return Account.TotalAccount;}
 	
 	public Account(int id) {
-		this.balance=500;
+		Account.TotalAccount++;
+		this.balance = 500;
 		this.holder = new Client();
+		
 		this.id = id;
 		if( this.id >= 0)
 			this.id = id;
@@ -25,34 +24,38 @@ public class Account {
 			System.out.println("Account's Id invalid");
 			return;
 		}
-		System.out.println("Constructing/Instacing a account...");
 	}
+//	public Account(int id, String Holdername) {
+//		Account.TotalAccount++;
+//		this.balance = 500;
+//		this.holder =  new Client(Holdername);
+//		
+//		this.id = id;
+//		if(this.id >= 0)
+//			this.id = id;
+//		else {
+//			System.out.println("Account's Id invalid");
+//			return;
+//		}
+//	}
 	
-	//Accessor methods
-	public double getBalance() {
-		return this.balance;
-	}
-	public double getId() {
-		return this.id;
-	}
+	//acessors methods
+	public double getBalance() { return this.balance;}
+	public double getId() { return this.id;}
+	public Client getHolder() { return this.holder;}
 	
-	public Client getHolder() {
-		return this.holder;
-	}
-	
-	//behaviors
+	//behavior
 	public boolean withdraw(double value){
-		if( this.balance < value) 
+		if(this.balance < value ) 
 			return false;
-		else {
-			//this is reference for who's summon up the method
+		else{
+			//this is reference for who summon up the method
 			this.balance -= value;
 			return true;
 		}
-		
 	}
 	
-	public boolean deposit( double value) {
+	public boolean deposit(double value) {
 		if( value <= 0)
 			return false;
 		else {
@@ -60,21 +63,21 @@ public class Account {
 			return true;
 		}
 	}
-	
-	public boolean transfer( double value, Account destinationAccount) {
-		if( this.balance < value )
+	public boolean transfer( double value, Account accountDestination) {
+		if(this.withdraw(value)==false)
 			return false;
 		else {
-			//this is account source
-			this.balance -= value;
-			return destinationAccount.deposit(value);
-		}
+			//this is reference to account source
+			//this.balance += value;
+			return accountDestination.deposit(value);		}
 	}
+	
 	
 	public void showData() {
 		System.out.println("Account's Id: "+this.getId());
-		System.out.println("Account's Balance: "+this.balance);
-		System.out.println("Holder's information: ");
+		System.out.println("Account's Balance "+this.balance);
+		System.out.println("Holder's information ");
 		this.holder.showData();
 	}
+	
 }

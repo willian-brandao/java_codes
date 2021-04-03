@@ -1,4 +1,5 @@
 
+
 public class BankTeller extends Employee{
 	
 	private int ticketNumber;
@@ -13,6 +14,6 @@ public class BankTeller extends Employee{
 
 	@Override
 	public double getSalaryBonus() {
-		return this.salary * 0.15;
+		return super.salary * 0.15;
 	}
 }
