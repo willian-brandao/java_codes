@@ -1,6 +1,6 @@
 
 
-public class Treasurer extends Employee{
+public class Treasurer extends AuthenticatedEmployee{
 	
 	@Override
 	public double getSalaryBonus() {
